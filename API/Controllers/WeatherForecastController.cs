@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+// Endpoint which is our API server is listening on, is detailed here
+// Each API Controller has a route, here the name is ["controller"]
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
