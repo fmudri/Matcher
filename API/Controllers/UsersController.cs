@@ -3,6 +3,13 @@ using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+/*
+* An API Controller inherits from a controller base class
+* An API Controller has an API Controller Attribute
+* An API Controller has different endpoints
+* And we return action results from our API controllers
+*/
+
 namespace API.Controllers // Defines the namespace for organizing code and preventing naming conflicts.
 {
     [ApiController] // Specifies that this class is an API controller, enabling automatic model validation and other features.
