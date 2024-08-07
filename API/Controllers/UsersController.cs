@@ -12,11 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers // Defines the namespace for organizing code and preventing naming conflicts.
 {
-    [ApiController] // Specifies that this class is an API controller, enabling automatic model validation and other features.
-    [Route("api/[controller]")] // localhost:5001/api/users and then it is routed to UsersController controller and the endpoints inside it
+    [ApiController] 
+    [Route("api/[controller]")] 
 
     // (DataContext context) is a cleaner way of writing the constructor from C# 12 onwards
-    public class UsersController(DataContext context) : ControllerBase // Class UsersController is deriving from class ControllerBase
+    public class UsersController(DataContext context) : BaseApiController // Class UsersController is deriving from BaseApiController which derives 
+                                                                       // class ControllerBase
     {
         // This is an HTTP get request with method inside it to create a response
         [HttpGet]

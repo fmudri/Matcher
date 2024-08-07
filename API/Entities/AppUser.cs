@@ -15,7 +15,7 @@ public class AppUser
 {
     /*
     * Public is a modifier, it can also be private or internal for example.
-    * But, because of Entity framework, it need to be public. EF works only with public access modifiers.
+    * But, because of Entity framework, it needs to be public. EF works only with public access modifiers.
     * When it comes to EF, the class itself represents a table and each property represents a column.
 
     * The default value for an int is 0, it can not be null as it is a primitive type.
@@ -31,4 +31,6 @@ public class AppUser
     * is oblivious to what it is which can cause an exception later on
     */
     public required string UserName { get; set; }
+    public required byte[] PasswordHash { get; set; }
+    public required byte[] PasswordSalt { get; set; }
 }
