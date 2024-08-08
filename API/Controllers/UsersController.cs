@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace API.Controllers // Defines the namespace for organizing code and preve
                                                                        // class ControllerBase
     {
         // This is an HTTP get request with method inside it to create a response
+        [AllowAnonymous]
         [HttpGet]
         // IEnumerable is a type of list used for a collection of a specified type
         // GetUsers() is an API endpoint
@@ -35,6 +37,7 @@ namespace API.Controllers // Defines the namespace for organizing code and preve
             // return NotFound...
         }
 
+        [Authorize]
         // We cannot have two matching endpoints because they have the same routes and HTTP methods
         [HttpGet("{id:int}")] // api/users/n
         public async Task<ActionResult<AppUser>> GetUser(int id)
