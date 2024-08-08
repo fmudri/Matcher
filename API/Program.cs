@@ -4,6 +4,8 @@
 */
 
 using API.Data;
+using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +38,9 @@ builder.Services.AddDbContext<DataContext>(opt =>
 // This is essential when developing client-server applications where the frontend
 // and backend are hosted on different domains or ports.
 builder.Services.AddCors();
+
+// Scoped services are create once per client request
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Builds the application. This method finalizes the setup of the application's
 // services and middleware pipeline based on the configured services.
