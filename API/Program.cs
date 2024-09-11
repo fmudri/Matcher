@@ -13,6 +13,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 // This method is used to configure and register services required for user authentication, authorization, and identity management.
 builder.Services.AddIdentityServices(builder.Configuration);
 
+builder.Services.AddCors();
 // Builds the application. This method finalizes the setup of the application's
 // services and middleware pipeline based on the configured services.
 var app = builder.Build();

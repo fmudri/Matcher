@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavComponent } from "./nav/nav.component";
 
 @Component({
   // The 'selector' property specifies the custom HTML tag for this component.
@@ -18,7 +19,7 @@ import { RouterOutlet } from '@angular/router';
   // that this component requires. 'RouterOutlet' is a directive from Angular's
   // RouterModule that acts as a placeholder for dynamically loaded views
   // based on the current route.
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavComponent],
 
   // The 'templateUrl' property specifies the path to an external HTML file
   // that defines the view for this component. The content of this HTML file
