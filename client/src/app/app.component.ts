@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
 import { AccountsService } from './_services/accounts.service';
+import { HomeComponent } from "./home/home.component";
 
 @Component({
   // The 'selector' property specifies the custom HTML tag for this component.
@@ -20,7 +20,7 @@ import { AccountsService } from './_services/accounts.service';
   // that this component requires. 'RouterOutlet' is a directive from Angular's
   // RouterModule that acts as a placeholder for dynamically loaded views
   // based on the current route.
-  imports: [RouterOutlet, NavComponent],
+  imports: [RouterOutlet, NavComponent, HomeComponent],
 
   // The 'templateUrl' property specifies the path to an external HTML file
   // that defines the view for this component. The content of this HTML file
@@ -36,14 +36,10 @@ import { AccountsService } from './_services/accounts.service';
 export class AppComponent implements OnInit {
 
   // Injection for making HTTP requests possible
-  http = inject(HttpClient);
   private accountService = inject(AccountsService);
-  title = 'DatingApp';
-  users: any;
 
   // This came from implements OnInit quick fix
   ngOnInit(): void {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -54,18 +50,5 @@ export class AppComponent implements OnInit {
     this.accountService.currentUser.set(user);
   }
 
-  getUsers() {
-    // To make a new HTTP request we need to use this.class property
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      // These are all callback functions
-      // Response is the parametar, this.users = response(the thing I get back from my API server)
-      next: response => this.users = response,
-
-      // If I get an error, I can say error as the argument, then console.log and output the error
-      error: error => console.log(error),
-
-      // When we complete, we don't get anything back
-      complete: () => console.log('Request has completed')
-    })
-  }
+  
 }

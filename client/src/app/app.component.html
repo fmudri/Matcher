@@ -13,33 +13,5 @@
     below the navigation bar or to ensure a consistent look across different screen sizes.
 -->
 <div class="container" style="margin-top: 100px;">
-    
-    <!--
-        A standard unordered list (<ul>) is being created to display a list of users.
-        Each user is rendered as a list item (<li>).
-    -->
-    <ul>
-
-        <!--
-            This line is a structural directive that loops through the 'users' array (or iterable) from the component's data.
-            '@for' indicates a loop in this template syntax (it's not typical Angular syntax, so it could be a variant of
-            a framework or extension you're using, like Blazor, Razor, or similar).
-            It iterates over the 'users' collection and tracks each user by their unique 'id'.
-            'track user.id' optimizes the DOM rendering by ensuring each user is tracked based on their 'id', improving efficiency.
-        -->
-        @for (user of users; track user.id) {
-            
-            <!--
-                Each user in the 'users' array will be rendered inside a <li> tag.
-                {{user.id}} and {{user.userName}} are Angular interpolation bindings.
-                - {{user.id}} displays the user's ID.
-                - {{user.userName}} displays the user's name.
-                These values are dynamically pulled from the 'user' object.
-            -->
-            <li>
-                {{user.id}} - {{user.userName}}
-            </li>
-        }
-
-    </ul>
+    <app-home></app-home>
 </div>
