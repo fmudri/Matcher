@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
+import { AccountsService } from './_services/accounts.service';
 
 @Component({
   // The 'selector' property specifies the custom HTML tag for this component.
@@ -36,11 +37,24 @@ export class AppComponent implements OnInit {
 
   // Injection for making HTTP requests possible
   http = inject(HttpClient);
+  private accountService = inject(AccountsService);
   title = 'DatingApp';
   users: any;
 
   // This came from implements OnInit quick fix
   ngOnInit(): void {
+    this.getUsers();
+    this.setCurrentUser();
+  }
+
+  setCurrentUser(){
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    const user =JSON.parse(userString);
+    this.accountService.currentUser.set(user);
+  }
+
+  getUsers() {
     // To make a new HTTP request we need to use this.class property
     this.http.get('https://localhost:5001/api/users').subscribe({
       // These are all callback functions

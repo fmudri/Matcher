@@ -1,11 +1,45 @@
+<!--
+    This is a custom Angular component tag.
+    It inserts the 'app-nav' component into this part of the template.
+    The 'app-nav' component typically represents the navigation bar (header or menu) of the application.
+    Angular allows you to reuse components like this to keep your code modular and organized.
+-->
 <app-nav></app-nav>
 
+<!--
+    A container div is used to wrap the content and give it a structured layout.
+    The class "container" is likely from a CSS framework like Bootstrap, which provides predefined styles for layout.
+    The inline style "margin-top: 100px;" adds 100px of spacing at the top of the container, likely to offset the content
+    below the navigation bar or to ensure a consistent look across different screen sizes.
+-->
 <div class="container" style="margin-top: 100px;">
+    
+    <!--
+        A standard unordered list (<ul>) is being created to display a list of users.
+        Each user is rendered as a list item (<li>).
+    -->
     <ul>
+
+        <!--
+            This line is a structural directive that loops through the 'users' array (or iterable) from the component's data.
+            '@for' indicates a loop in this template syntax (it's not typical Angular syntax, so it could be a variant of
+            a framework or extension you're using, like Blazor, Razor, or similar).
+            It iterates over the 'users' collection and tracks each user by their unique 'id'.
+            'track user.id' optimizes the DOM rendering by ensuring each user is tracked based on their 'id', improving efficiency.
+        -->
         @for (user of users; track user.id) {
+            
+            <!--
+                Each user in the 'users' array will be rendered inside a <li> tag.
+                {{user.id}} and {{user.userName}} are Angular interpolation bindings.
+                - {{user.id}} displays the user's ID.
+                - {{user.userName}} displays the user's name.
+                These values are dynamically pulled from the 'user' object.
+            -->
             <li>
                 {{user.id}} - {{user.userName}}
             </li>
         }
+
     </ul>
 </div>
